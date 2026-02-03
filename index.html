@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>You Died v6.0 — Eternal Hell Mirror #666</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&family=Creepster&family=Nosifer&family=Share+Tech+Mono&display=swap');
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background:#000000;
+      color:#ff0000;
+      font-family:'Share Tech Mono', monospace;
+      font-size:16px;
+      line-height:1.4;
+      padding:20px 25px 100px;
+      min-height:100vh;
+      overflow-x:hidden;
+      position:relative;
+      animation:deep-hell-pulse 18s infinite alternate;
+    }
+
+    @keyframes deep-hell-pulse {
+      0%   { background:#000000; filter:brightness(0.7) contrast(1.1); }
+      100% { background:#0c0000; filter:brightness(1.1) contrast(1.3); }
+    }
+
+    /* Падаюча кров — ще більше */
+    .blood-drop {
+      position:absolute;
+      width:3px; height:18px;
+      background:linear-gradient(#8b0000, #300000);
+      border-radius:50% 50% 0 0;
+      animation:fall-blood 5s linear infinite;
+      opacity:0.65;
+      z-index:3;
+    }
+
+    @keyframes fall-blood {
+      0%   { transform:translateY(-150vh) rotate(0deg); }
+      100% { transform:translateY(180vh) rotate(720deg); }
+    }
+
+    /* Плаваючі черепи */
+    .skull-float {
+      position:absolute;
+      font-size:2.5rem;
+      color:#440000;
+      opacity:0.25;
+      pointer-events:none;
+      z-index:2;
+      animation:float-skull 25s infinite linear, pulse-skull 6s infinite alternate;
+    }
+
+    @keyframes float-skull {
+      0%   { transform:translate(-20vw, -20vh) rotate(0deg); }
+      100% { transform:translate(120vw, 120vh) rotate(360deg); }
+    }
+
+    @keyframes pulse-skull {
+      0%   { opacity:0.15; transform:scale(0.8); }
+      100% { opacity:0.35; transform:scale(1.2); }
+    }
+
+    header {
+      text-align:center;
+      margin:60px 0 40px;
+      position:relative;
+      z-index:20;
+    }
+
+    h1 {
+      font-family:'Nosifer', cursive;
+      font-size:8rem;
+      color:#ff0000;
+      text-shadow:
+        0 0 25px #ff0000,
+        0 0 50px #aa0000,
+        0 0 100px #550000,
+        0 0 150px #330000;
+      letter-spacing:12px;
+      animation:hell-glitch-intense 2.5s infinite, burn-hell 9s infinite alternate;
+    }
+
+    @keyframes hell-glitch-intense {
+      0%,100%   { text-shadow: 5px 5px #00ff41, -5px -5px #ff0044; transform:translate(0); }
+      10%       { text-shadow:-6px 6px #ffff00, 6px -6px #00ffff; transform:translate(3px,-3px); }
+      30%       { text-shadow:7px -7px #ff00aa, -7px 7px #00ff88; transform:translate(-4px,4px); }
+      50%       { text-shadow:-8px -8px #ff8800, 8px 8px #8800ff; transform:translate(2px,2px); }
+      70%       { text-shadow:0 0 80px #ff0000; transform:translate(-2px,-2px); }
+    }
+
+    @keyframes burn-hell {
+      0%   { filter:brightness(1) contrast(1) saturate(1); }
+      100% { filter:brightness(1.8) contrast(1.5) saturate(1.8); }
+    }
+
+    .status-line {
+      color:#ff6600;
+      font-size:2rem;
+      margin:25px 0;
+      text-shadow:0 0 15px #ff8800;
+      animation:blink-fast 0.7s infinite;
+    }
+
+    .victim-counter {
+      font-size:2.5rem;
+      color:#ff0000;
+      text-align:center;
+      margin:30px 0;
+      font-family:'Creepster', cursive;
+      text-shadow:0 0 20px #880000;
+      animation:counter-glow 3s infinite alternate;
+    }
+
+    @keyframes counter-glow {
+      0%   { text-shadow:0 0 20px #880000; }
+      100% { text-shadow:0 0 50px #ff0000; }
+    }
+
+    .warning-bar {
+      background:rgba(40,0,0,0.8);
+      border:3px dashed #770000;
+      color:#ff1a1a;
+      text-align:center;
+      padding:25px;
+      margin:40px 0;
+      font-size:1.5rem;
+      box-shadow:0 0 40px #440000 inset;
+      animation:shake-intense 4s infinite, pulse-red 1.8s infinite;
+    }
+
+    @keyframes shake-intense {
+      0%,100% { transform:translate(0); }
+      10%,30%,50%,70%,90% { transform:translateX(-6px) rotate(-1deg); }
+      20%,40%,60%,80%     { transform:translateX(6px) rotate(1deg); }
+    }
+
+    table.market {
+      width:100%;
+      max-width:1400px;
+      margin:50px auto;
+      border-collapse:collapse;
+      background:#0a0000;
+      border:4px solid #550000;
+      box-shadow:0 0 80px #330000;
+    }
+
+    th, td {
+      padding:20px 15px;
+      border:1px solid #440000;
+    }
+
+    th {
+      background:#110000;
+      color:#ff8800;
+      font-size:1.2rem;
+      letter-spacing:1.5px;
+    }
+
+    tr:hover {
+      background:#220000;
+      animation:row-burn 1.2s infinite;
+    }
+
+    @keyframes row-burn {
+      0%,100% { filter:brightness(1); }
+      50%     { filter:brightness(1.6); }
+    }
+
+    .price {
+      color:#ffcc00;
+      font-weight:bold;
+      text-shadow:0 0 12px #ff8800;
+      animation:price-flicker 0.3s infinite alternate;
+    }
+
+    @keyframes price-flicker {
+      0%   { opacity:1; }
+      100% { opacity:0.75; }
+    }
+
+    .btn-action {
+      background:#330000;
+      color:#ff0000;
+      border:3px solid #880000;
+      padding:14px 30px;
+      font-size:1.3rem;
+      cursor:pointer;
+      box-shadow:0 0 20px #660000;
+      transition:all 0.3s;
+      animation:btn-hell-glow 1.8s infinite;
+    }
+
+    .btn-action:hover {
+      background:#550000;
+      box-shadow:0 0 50px #ff0000, inset 0 0 20px #880000;
+      transform:scale(1.12) rotate(2deg);
+    }
+
+    @keyframes btn-hell-glow {
+      0%   { box-shadow:0 0 20px #660000; }
+      50%  { box-shadow:0 0 45px #cc0000; }
+      100% { box-shadow:0 0 20px #660000; }
+    }
+
+    footer {
+      text-align:center;
+      color:#440000;
+      margin:150px 0 80px;
+      font-size:1.3rem;
+      letter-spacing:2px;
+      text-shadow:0 0 15px #220000;
+    }
+
+    .big-demon-ascii, .skull-ascii {
+      font-family:'VT323', monospace;
+      font-size:1.5rem;
+      white-space:pre;
+      color:#550000;
+      margin:60px auto;
+      text-align:center;
+      max-width:95%;
+      animation:glitch-heavy 7s infinite, flicker-slow 0.5s infinite alternate;
+    }
+
+    @keyframes glitch-heavy {
+      0%,100% { transform:translate(0); opacity:0.7; }
+      15%     { transform:translate(-5px,5px); opacity:1; }
+      35%     { transform:translate(5px,-5px); opacity:0.8; }
+      55%     { transform:translate(-3px,3px); opacity:0.9; }
+      75%     { transform:translate(3px,-3px); opacity:0.7; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Падаюча кров + плаваючі черепи -->
+<script>
+  // Кров
+  function spawnBloodDrop() {
+    const drop = document.createElement('div');
+    drop.className = 'blood-drop';
+    drop.style.left = Math.random() * 100 + 'vw';
+    drop.style.animationDuration = (Math.random() * 5 + 4) + 's';
+    document.body.appendChild(drop);
+    setTimeout(() => drop.remove(), 20000);
+  }
+  setInterval(spawnBloodDrop, 80);
+
+  // Плаваючі черепи
+  const skulls = ['💀','☠','👹','🔥','🩸','🪦','🕯️','🖤'];
+  function spawnSkull() {
+    const skull = document.createElement('div');
+    skull.className = 'skull-float';
+    skull.textContent = skulls[Math.floor(Math.random() * skulls.length)];
+    skull.style.left = Math.random() * 100 + 'vw';
+    skull.style.top = Math.random() * 100 + 'vh';
+    skull.style.animationDuration = (Math.random() * 20 + 15) + 's';
+    document.body.appendChild(skull);
+    setTimeout(() => skull.remove(), 30000);
+  }
+  setInterval(spawnSkull, 1200);
+</script>
+
+<!-- Лічильник жертв -->
+<div class="victim-counter" id="victim-counter">Жертв зібрано: <span id="soul-count">0</span></div>
+
+<div id="closed-screen" class="hidden">
+  <div id="closed-msg">
+    █ YOU DIED — ABYSS LOCKED █<br><br>
+    Gates sealed 00:00–01:00 Kyiv time<br>
+    Torment resumes at 01:00... if you still have a soul left
+  </div>
+  <div id="timer">--:--:--</div>
+</div>
+
+<!-- Правила (скорочено для прикладу) -->
+<div id="rules-screen" class="hidden">
+  <button id="close-rules">FLEE [X]</button>
+  <div id="rules-content">
+    <h2>DECREES OF THE DAMNED</h2>
+    <!-- ... дуже довгий список правил як раніше ... -->
+  </div>
+</div>
+
+<!-- Форум -->
+<div id="forum-screen" class="hidden">
+  <button id="close-forum">SEAL [X]</button>
+  <div id="forum-content">
+    <h2>SCREAMS FROM THE PIT</h2>
+    <div id="post-form">
+      <input type="text" id="post-user" placeholder="Alias" />
+      <input type="text" id="post-title" placeholder="Title" required />
+      <textarea id="post-content" rows="8" placeholder="Speak... the void listens" required></textarea>
+      <button id="submit-post">CAST INTO VOID</button>
+    </div>
+    <div id="user-posts"></div>
+    <!-- приклади тредів -->
+  </div>
+</div>
+
+<div id="main-content">
+  <header>
+    <h1>YOU DIED</h1>
+    <div class="status-line">v6.0 • Mirror #666 • <span class="blink">ETERNAL TORMENT ACTIVE</span></div>
+  </header>
+
+  <div class="warning-bar">
+    YOUR PRESENCE HERE IS A SACRIFICE — THERE IS NO LEAVING
+  </div>
+
+  <div id="sell-form">
+    <h3>SACRIFICE YOUR OFFERING TO HELL</h3>
+    <!-- форма продажу -->
+  </div>
+
+  <table class="market">
+    <thead>
+      <tr>
+        <th>Item / Curse</th>
+        <th>Category</th>
+        <th>Vendor</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Stock</th>
+        <th>Details</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 80+ рядків товарів -->
+      <tr><td>Bound Succubus • Lust Eternal • Obedient</td><td>Entities</td><td class="vendor-name online">Lilith’s Slave Market</td><td class="price">1.333 BTC</td><td>4.98 / 13,666</td><td>Available</td><td>Soul contract required</td><td><a href="#" class="btn-action">BIND</a></td></tr>
+      <tr><td>Plague Vial • Black Death Strain • Airborne</td><td>Poisons</td><td class="vendor-name online">Pestilence Chem</td><td class="price">0.777 BTC</td><td>4.95 / 8,901</td><td>9 left</td><td>Worldwide micro-drop</td><td><a href="#" class="btn-action">RELEASE</a></td></tr>
+      <!-- ... і так далі, дуже довгий список ... -->
+    </tbody>
+  </table>
+
+  <div style="text-align:center; margin:120px 0;">
+    <a href="#" id="show-rules" class="btn-action">READ THE DECREES</a>
+    <a href="#" id="show-forum" class="btn-action">HEAR THE DAMNED</a>
+  </div>
+
+  <footer>
+    ENTERED FOREVER • NO ESCAPE • NO LIGHT • NO HOPE
+  </footer>
+</div>
+
+<!-- Звуки (браузер може блокувати автозапуск) -->
+<audio id="scream-sound" src="https://assets.codepen.io/605876/scream-short.mp3" preload="auto"></audio>
+<audio id="laugh-sound" src="https://assets.codepen.io/605876/demon-laugh.mp3" preload="auto"></audio>
+<audio id="heartbeat" src="https://assets.codepen.io/605876/heartbeat-dark.mp3" loop preload="auto"></audio>
+
+<script>
+// Лічильник жертв
+let souls = 19864;
+const soulDisplay = document.getElementById('soul-count');
+setInterval(() => {
+  souls += Math.floor(Math.random() * 5) + 1;
+  soulDisplay.textContent = souls.toLocaleString();
+}, 3000);
+
+// Звуки при кліках
+document.querySelectorAll('.btn-action').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('scream-sound').currentTime = 0;
+    document.getElementById('scream-sound').play().catch(()=>{});
+  });
+});
+
+// Запуск серцебиття
+document.getElementById('heartbeat').volume = 0.15;
+document.getElementById('heartbeat').play().catch(()=>{});
+
+// ... решта скриптів як раніше (закриття, форум, продаж) ...
+</script>
+
+</body>
+</html>
